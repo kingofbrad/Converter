@@ -11,9 +11,16 @@
 		FA63FE452A798D7E009FA03E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63FE442A798D7E009FA03E /* ContentView.swift */; };
 		FA63FE472A798D80009FA03E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA63FE462A798D80009FA03E /* Assets.xcassets */; };
 		FA63FE4A2A798D80009FA03E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA63FE492A798D80009FA03E /* Preview Assets.xcassets */; };
-		FA63FE522A798DDA009FA03E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FA63FE512A798DDA009FA03E /* Alamofire */; };
-		FA63FE542A798E87009FA03E /* CurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63FE532A798E87009FA03E /* CurrencyModel.swift */; };
-		FA63FE582A799EED009FA03E /* AllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63FE572A799EED009FA03E /* AllView.swift */; };
+		FA8998162A9A63EB000A63F9 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8998152A9A63EB000A63F9 /* SettingsView.swift */; };
+		FA8998192A9A6727000A63F9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8998182A9A6727000A63F9 /* Constants.swift */; };
+		FA89981C2A9A8DEC000A63F9 /* CurrencyLayerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89981B2A9A8DEC000A63F9 /* CurrencyLayerAPI.swift */; };
+		FA89981F2A9A8E58000A63F9 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89981E2A9A8E58000A63F9 /* Environment.swift */; };
+		FA8998222A9A93A3000A63F9 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8998212A9A93A3000A63F9 /* Currency.swift */; };
+		FA8998242A9E7499000A63F9 /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8998232A9E7499000A63F9 /* Rate.swift */; };
+		FA8998272A9E782E000A63F9 /* CurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8998262A9E782E000A63F9 /* CurrencyViewModel.swift */; };
+		FA89982A2A9E7BD7000A63F9 /* Date+TimeStamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8998292A9E7BD7000A63F9 /* Date+TimeStamp.swift */; };
+		FA89982C2A9E7CAF000A63F9 /* String+Stride.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89982B2A9E7CAF000A63F9 /* String+Stride.swift */; };
+		FA89982F2A9E7ED0000A63F9 /* TextFieldClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89982E2A9E7ED0000A63F9 /* TextFieldClearButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,8 +29,16 @@
 		FA63FE442A798D7E009FA03E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FA63FE462A798D80009FA03E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA63FE492A798D80009FA03E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		FA63FE532A798E87009FA03E /* CurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyModel.swift; sourceTree = "<group>"; };
-		FA63FE572A799EED009FA03E /* AllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllView.swift; sourceTree = "<group>"; };
+		FA8998152A9A63EB000A63F9 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		FA8998182A9A6727000A63F9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		FA89981B2A9A8DEC000A63F9 /* CurrencyLayerAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyLayerAPI.swift; sourceTree = "<group>"; };
+		FA89981E2A9A8E58000A63F9 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		FA8998212A9A93A3000A63F9 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		FA8998232A9E7499000A63F9 /* Rate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
+		FA8998262A9E782E000A63F9 /* CurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewModel.swift; sourceTree = "<group>"; };
+		FA8998292A9E7BD7000A63F9 /* Date+TimeStamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+TimeStamp.swift"; sourceTree = "<group>"; };
+		FA89982B2A9E7CAF000A63F9 /* String+Stride.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Stride.swift"; sourceTree = "<group>"; };
+		FA89982E2A9E7ED0000A63F9 /* TextFieldClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldClearButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,7 +46,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA63FE522A798DDA009FA03E /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,6 +71,12 @@
 		FA63FE412A798D7E009FA03E /* Converter */ = {
 			isa = PBXGroup;
 			children = (
+				FA89982D2A9E7EB9000A63F9 /* Components */,
+				FA8998282A9E7BC5000A63F9 /* Extenstions */,
+				FA8998252A9E77F7000A63F9 /* ViewModels */,
+				FA89981D2A9A8E48000A63F9 /* Config */,
+				FA89981A2A9A8DD5000A63F9 /* API */,
+				FA8998172A9A671B000A63F9 /* Constants */,
 				FA63FE562A799EAB009FA03E /* Models */,
 				FA63FE552A799EA3009FA03E /* Views */,
 				FA63FE422A798D7E009FA03E /* ConverterApp.swift */,
@@ -78,7 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				FA63FE442A798D7E009FA03E /* ContentView.swift */,
-				FA63FE572A799EED009FA03E /* AllView.swift */,
+				FA8998152A9A63EB000A63F9 /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -86,9 +106,59 @@
 		FA63FE562A799EAB009FA03E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				FA63FE532A798E87009FA03E /* CurrencyModel.swift */,
+				FA8998212A9A93A3000A63F9 /* Currency.swift */,
+				FA8998232A9E7499000A63F9 /* Rate.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		FA8998172A9A671B000A63F9 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				FA8998182A9A6727000A63F9 /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		FA89981A2A9A8DD5000A63F9 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				FA89981B2A9A8DEC000A63F9 /* CurrencyLayerAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		FA89981D2A9A8E48000A63F9 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				FA89981E2A9A8E58000A63F9 /* Environment.swift */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		FA8998252A9E77F7000A63F9 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				FA8998262A9E782E000A63F9 /* CurrencyViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		FA8998282A9E7BC5000A63F9 /* Extenstions */ = {
+			isa = PBXGroup;
+			children = (
+				FA8998292A9E7BD7000A63F9 /* Date+TimeStamp.swift */,
+				FA89982B2A9E7CAF000A63F9 /* String+Stride.swift */,
+			);
+			path = Extenstions;
+			sourceTree = "<group>";
+		};
+		FA89982D2A9E7EB9000A63F9 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				FA89982E2A9E7ED0000A63F9 /* TextFieldClearButton.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -108,7 +178,6 @@
 			);
 			name = Converter;
 			packageProductDependencies = (
-				FA63FE512A798DDA009FA03E /* Alamofire */,
 			);
 			productName = Converter;
 			productReference = FA63FE3F2A798D7E009FA03E /* Converter.app */;
@@ -167,10 +236,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA63FE542A798E87009FA03E /* CurrencyModel.swift in Sources */,
+				FA89982A2A9E7BD7000A63F9 /* Date+TimeStamp.swift in Sources */,
+				FA8998222A9A93A3000A63F9 /* Currency.swift in Sources */,
+				FA8998272A9E782E000A63F9 /* CurrencyViewModel.swift in Sources */,
+				FA89982F2A9E7ED0000A63F9 /* TextFieldClearButton.swift in Sources */,
+				FA8998162A9A63EB000A63F9 /* SettingsView.swift in Sources */,
+				FA89982C2A9E7CAF000A63F9 /* String+Stride.swift in Sources */,
+				FA89981F2A9A8E58000A63F9 /* Environment.swift in Sources */,
+				FA8998242A9E7499000A63F9 /* Rate.swift in Sources */,
 				FA63FE452A798D7E009FA03E /* ContentView.swift in Sources */,
 				FA63FE432A798D7E009FA03E /* ConverterApp.swift in Sources */,
-				FA63FE582A799EED009FA03E /* AllView.swift in Sources */,
+				FA8998192A9A6727000A63F9 /* Constants.swift in Sources */,
+				FA89981C2A9A8DEC000A63F9 /* CurrencyLayerAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,11 +374,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENCY_LAYER_ACCESS_KEY = c83e3cba6be35a8af4830ad652bdae6b;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Converter/Preview Content\"";
 				DEVELOPMENT_TEAM = 488D86WNW2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Converter/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -326,11 +405,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENCY_LAYER_ACCESS_KEY = c83e3cba6be35a8af4830ad652bdae6b;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Converter/Preview Content\"";
 				DEVELOPMENT_TEAM = 488D86WNW2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Converter/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -382,14 +463,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		FA63FE512A798DDA009FA03E /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FA63FE502A798DDA009FA03E /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FA63FE372A798D7E009FA03E /* Project object */;
 }

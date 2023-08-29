@@ -11,140 +11,115 @@
 
 import SwiftUI
 
-
-enum Countries: String, CaseIterable, Identifiable {
-    case pound = "GBP"
-    case dollars = "USD"
-    case yen = "JPY"
-    
-    var id: Countries{self}
-}
-
 struct ContentView: View {
-    @State var input = "1"
-    // Amount to be converted
-    @State var base = "GBP"
-    // Base value for api to fetch the default exchange rate
-    @State var showSheet: Bool = false
-    // Toggle Fuction to display all the exchance rates
-    @State private var fromCurrency: Countries = .pound
-    @State private var toCurrency: Countries = .yen
-    @State var currencyList = [String]()
-    @FocusState private var inputIsFocused: Bool
-    @State private var text: String = ""
+    @ObservedObject var vm = CurrencyViewModel.shared
+    @State var currentCurrency: Currency = Currency.defaultCurrency
+    @State var amount: String = "1"
+    @State var showCurrenciesSheet: Bool = false
     
-    func makeRequest(showAll: Bool, currencies: [String] = ["USD", "GBP", "EUR"]) {
-        apiRequest(url: "https://api.exchangerate.host/latest?base=\(fromCurrency)&amount=\(input)") { currency in
-            //print("ContentView", currency.rates)
-            var tempList = [String]()
-            
-            for currency in currency.rates {
-                
-                if showAll {
-                    tempList.append("\(currency.key) \(String(format: "%.2f",currency.value))")
-                } else if currencies.contains(currency.key)  {
-                    tempList.append("\(currency.key) \(String(format: "%.2f",currency.value))")
-                }
-                tempList.sort()
-            }
-            currencyList.self = tempList
-            
-        }
-    }
-    
-    
-    func makeConvertRequest(currencies: [String] = []) {
-        apiRequest(url: "https://api.exchangerate.host/convert?from=\(fromCurrency)&to=\(toCurrency)") { currency in
-            var list = [String]()
-            for currency in currency.rates {
-                list.append("\(currency.key) \(String(format: "%.2F", currency.value))")
-            }
-            
-            
-        }
-    }
     
     var body: some View {
-        NavigationStack {
-            VStack {
-                VStack {
-                    
-                    Picker("Base Rate", selection: $fromCurrency) {
-                        ForEach(Countries.allCases) { category in
-                            Text(category.rawValue).tag(category)
+        NavigationView {
+            Form {
+                Section() {
+                    Picker(selection: $currentCurrency, label: Text(currentCurrency.code)) {
+                        ForEach(vm.currencies.sorted {$0.name < $1.name}, id: \.code) { currency in
+                            Text(currency.name)
+                                .tag(currency)
+                        }
+                    }
+                    TextField("Amount", text: $amount)
+                        .font(.title)
+                        .modifier(TextFieldClearButton(text: $amount))
+                        .keyboardType(.decimalPad)
+                        .multilineTextAlignment(.trailing)
+                        .frame(height: rowHeight)
+                        .onChange(of: amount) { value in
+                            vm.checkRatesExpiration()
+                        }
+                }
+                Section() {
+                    HStack {
+                        Text("Last Update:")
+                        Spacer()
+                        Text(lastUpdate())
+                    }
+                    .font(.subheadline)
+                }
+                Section() {
+                    ForEach(vm.showCurrencies, id: \.code) { currency in
+                        HStack(alignment: .center, spacing: nil) {
+                            VStack {
+                                Text(currency.code)
+                            }
+                            Spacer()
+                            Text(rateConvertion(to: currency))
+                                .font(.title)
+                        }
+                        .frame(height: rowHeight)
+                    }
+                    .onDelete(perform: vm.removeCurrency)
+                    Button(action: {showCurrenciesSheet.toggle()}) {
+                        HStack {
+                            Spacer()
+                            Image(systemName: "plus")
+                            Spacer()
+                        }
+                    }
+                }
+            }
+            .navigationTitle("Currency Converter")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {showCurrenciesSheet.toggle()}) {
+                        Text(Image(systemName: "plus"))
+                    }
+                }
+            }
+        }
+        .sheet(isPresented: $showCurrenciesSheet,
+               content: {
+            NavigationView {
+                List {
+                    ForEach(vm.currencies.sorted { $0.name < $1.name}.filter{!vm.showCurrencies.contains($0)}, id: \.code) { currency in
+                        Button {
+                            vm.add(currency: currency)
+                            showCurrenciesSheet.toggle()
+                        } label: {
+                            Text(currency.name)
                                 
                         }
                         
                     }
-                    .pickerStyle(.navigationLink)
-                    .frame(width: 180, height: 20)
-                    .foregroundColor(Color.black)
-                    .padding()
-                    .background(Color.gray.opacity(0.10))
-                    .cornerRadius(10.0)
-                    .padding()
                     
-                    
-                    
-                    
-                    
-                    
-                    
-                    Picker("Converted Rate", selection: $toCurrency) {
-                        ForEach(Countries.allCases) { category in
-                            Text(category.rawValue).tag(category)
-                        }
-                        
-                    }
-                    .pickerStyle(.navigationLink)
-                    .frame(width: 180, height: 20)
-                    .padding()
-                    .background(Color.gray.opacity(0.10))
-                    .cornerRadius(10.0)
-                    
-                    
-                    TextField("Enter an currency", text: $base)
-                        .padding()
-                        .background(Color.gray.opacity(0.10))
-                        .cornerRadius(20.0)
-                        .padding()
-                        .focused($inputIsFocused)
-                    Button("Convert") {
-                        makeRequest(showAll: false, currencies: ["GBP", "PLN", "JPY"])
-                    }
-                    Button("Exchange Rates") {
-                        showSheet = true
-                    }
                 }
+                .navigationTitle("Currencies")
             }
-            .sheet(isPresented: $showSheet, content: {
-                AllView(input: $input, base: $base)
-                    .presentationDetents([.height(350)])
-            })
-            
-            .onAppear {
-                makeRequest(showAll: true)
-            }
-            .toolbar {
-                
-            }
-            .navigationTitle("Currency")
-            Spacer()
-        }
-        
-        
-        
+        })
     }
     
     
+    private var rowHeight: CGFloat = 50
+    
+    private func lastUpdate() -> String {
+        if let lastUpdate = vm.lastUpdate {
+            let dateFormatter = DateFormatter()
+            dateFormatter.timeStyle = .short
+            return dateFormatter.string(from: lastUpdate)
+        }
+        return ""
+    }
+    
+    private func rateConvertion(to currency: Currency) -> String {
+        if let amount = Double(amount) {
+            return String(format: "%.2f", vm.convert(from: currentCurrency, to: currency, amount: amount))
+        }
+        return "-"
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationStack {
-            ContentView()
-        }
-        
+        ContentView()
     }
 }
-

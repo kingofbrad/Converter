@@ -19,5 +19,6 @@ struct Currency: Codable, Hashable {
             Currency(code: "JPY", name: "Japanese Yen"),
             Currency(code: "KRW", name: "South Korean Won"),
             Currency(code: "USD", name: "United States Dollar")
-            ]
+       
+    ]
 }

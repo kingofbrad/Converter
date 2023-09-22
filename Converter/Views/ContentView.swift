@@ -43,6 +43,13 @@ struct ContentView: View {
                         Text("Last Update:")
                         Spacer()
                         Text(lastUpdate())
+                        Button {
+                            lastUpdate()
+                        } label: {
+                            Image(systemName: "goforward")
+
+                        }
+
                     }
                     .font(.subheadline)
                 }
@@ -86,7 +93,12 @@ struct ContentView: View {
                             vm.add(currency: currency)
                             showCurrenciesSheet.toggle()
                         } label: {
-                            Text(currency.name)
+                            HStack {
+                                Text(currency.code)
+                                Text(currency.name)
+                                
+                            }
+                            
                                 
                         }
                         
@@ -97,6 +109,8 @@ struct ContentView: View {
             }
         })
     }
+    
+    
     
     
     private var rowHeight: CGFloat = 50

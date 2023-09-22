@@ -12,7 +12,7 @@ struct Currency: Codable, Hashable {
     var code: String
     var name: String
     
-    static let defaultCurrency = Currency(code: "USD", name: "United States Dollar")
+    static let defaultCurrency = Currency(code: "GBP", name: "British Pound Sterling")
     static let defaultCurrenciesList = [
             Currency(code: "CNY", name: "Chinese Yuan"),
             Currency(code: "EUR", name: "Euro"),

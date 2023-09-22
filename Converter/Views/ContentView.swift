@@ -16,6 +16,7 @@ struct ContentView: View {
     @State var currentCurrency: Currency = Currency.defaultCurrency
     @State var amount: String = "1"
     @State var showCurrenciesSheet: Bool = false
+    @State var showFavoriteSheet: Bool = false
     
     
     var body: some View {
@@ -43,12 +44,7 @@ struct ContentView: View {
                         Text("Last Update:")
                         Spacer()
                         Text(lastUpdate())
-                        Button {
-                            lastUpdate()
-                        } label: {
-                            Image(systemName: "goforward")
-
-                        }
+                        
 
                     }
                     .font(.subheadline)
@@ -78,10 +74,19 @@ struct ContentView: View {
             .navigationTitle("Currency Converter")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {showCurrenciesSheet.toggle()}) {
-                        Text(Image(systemName: "plus"))
+                    HStack {
+                        Button(action: {showFavoriteSheet.toggle()}) {
+                            Text(Image(systemName: "star"))
+                        }
+                        Button(action: {showCurrenciesSheet.toggle()}) {
+                            Text(Image(systemName: "plus"))
+                        }
+
                     }
+                    
+                    
                 }
+                
             }
         }
         .sheet(isPresented: $showCurrenciesSheet,
@@ -108,6 +113,35 @@ struct ContentView: View {
                 .navigationTitle("Currencies")
             }
         })
+        .sheet(isPresented: $showFavoriteSheet,
+               content: {
+            NavigationView {
+                Form{
+                    Section() {
+                        ForEach(vm.showCurrencies, id: \.code) { currency in
+                            HStack(alignment: .center, spacing: nil) {
+                                VStack {
+                                    Text(currency.code)
+                                }
+                                Spacer()
+                                Text(rateConvertion(to: currency))
+                                    .font(.title)
+                            }
+                            .frame(height: rowHeight)
+                        }
+                        .onDelete(perform: vm.removeCurrency)
+//                        Button(action: {showCurrenciesSheet.toggle()}) {
+//                            HStack {
+//                                Spacer()
+//                                Image(systemName: "plus")
+//                                Spacer()
+//                            }
+//                        }
+                    }
+                }
+            }
+        }
+        )
     }
     
     

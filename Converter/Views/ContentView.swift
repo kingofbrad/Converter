@@ -76,7 +76,7 @@ struct ContentView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     HStack {
                         Button(action: {showFavoriteSheet.toggle()}) {
-                            Text(Image(systemName: "star"))
+                            Text(Image(systemName: "text.book.closed"))
                         }
                         Button(action: {showCurrenciesSheet.toggle()}) {
                             Text(Image(systemName: "plus"))
